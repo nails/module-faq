@@ -1,0 +1,66 @@
+<div class="group-faqs browse">
+    <p>
+        <?=lang('faqs_index_intro')?>
+    </p>
+    <?php
+
+        echo \Nails\Admin\Helper::loadSearch($search);
+        echo \Nails\Admin\Helper::loadPagination($pagination);
+
+    ?>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th class="label"><?=lang('faqs_index_th_quote')?></th>
+                    <th class="actions"><?=lang('faqs_index_th_actions')?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+
+                if ($faqs) {
+
+                    foreach ($faqs as $faq) {
+
+                        echo '<tr>';
+                            echo '<td class="label">';
+                                echo $faq->label;
+                            echo '</td>';
+                            echo '<td class="actions">';
+
+                                if (userHasPermission('admin:faq:faq:edit')) :
+
+                                    echo anchor('admin/faq/faq/edit/' . $faq->id, lang('action_edit'), 'class="awesome small"');
+
+                                endif;
+
+                                if (userHasPermission('admin:faq:faq:delete')) :
+
+                                    echo anchor('admin/faq/faq/delete/' . $faq->id, lang('action_delete'), 'class="awesome red small confirm" data-title="Are you sure?" data-body="You cannot undo this action"');
+
+                                endif;
+
+                            echo '</td>';
+                        echo '<tr>';
+                    }
+
+                } else {
+
+                    ?>
+                    <tr>
+                        <td colspan="2" class="no-data"><?=lang('faqs_index_no_faqs')?></td>
+                    </tr>
+                    <?php
+                }
+
+                ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
+
+        echo \Nails\Admin\Helper::loadPagination($pagination);
+
+    ?>
+</div>
