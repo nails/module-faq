@@ -12,7 +12,8 @@
         <table>
             <thead>
                 <tr>
-                    <th class="label"><?=lang('faqs_index_th_quote')?></th>
+                    <th class="label"><?=lang('faqs_index_th_label')?></th>
+                    <th class="order text-center"><?=lang('faqs_index_th_order')?></th>
                     <th class="actions"><?=lang('faqs_index_th_actions')?></th>
                 </tr>
             </thead>
@@ -26,6 +27,9 @@
                         echo '<tr>';
                             echo '<td class="label">';
                                 echo $faq->label;
+                            echo '</td>';
+                            echo '<td class="order text-center">';
+                                echo $faq->order;
                             echo '</td>';
                             echo '<td class="actions">';
 

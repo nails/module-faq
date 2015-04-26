@@ -97,7 +97,7 @@ class Faq extends \AdminController
         $sortColumns = array(
             $tablePrefix . '.created'  => 'Created Date',
             $tablePrefix . '.modified' => 'Modified Date',
-            $tablePrefix . '.order'    => 'Quotee'
+            $tablePrefix . '.order'    => 'Order'
         );
 
         // --------------------------------------------------------------------------
@@ -156,16 +156,21 @@ class Faq extends \AdminController
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('quote', '', 'xss_clean|required');
-            $this->form_validation->set_rules('quote_by', '', 'xss_clean|required');
+            $this->form_validation->set_rules('label', '', 'xss_clean|required');
+            $this->form_validation->set_rules('group', '', 'xss_clean|required');
+            $this->form_validation->set_rules('body', '', 'xss_clean|required');
+            $this->form_validation->set_rules('order', '', 'xss_clean|required|is_natural');
 
             $this->form_validation->set_message('required', lang('fv_required'));
+            $this->form_validation->set_message('is_natural', lang('fv_is_natural'));
 
             if ($this->form_validation->run()) {
 
-                $data             = array();
-                $data['quote']    = $this->input->post('quote');
-                $data['quote_by'] = $this->input->post('quote_by');
+                $data          = array();
+                $data['label'] = $this->input->post('label');
+                $data['group'] = $this->input->post('group');
+                $data['body']  = $this->input->post('body');
+                $data['order'] = (int) $this->input->post('order');
 
                 if ($this->faq_model->create($data)) {
 
@@ -223,16 +228,21 @@ class Faq extends \AdminController
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('quote', '', 'xss_clean|required');
-            $this->form_validation->set_rules('quote_by', '', 'xss_clean|required');
+            $this->form_validation->set_rules('label', '', 'xss_clean|required');
+            $this->form_validation->set_rules('group', '', 'xss_clean|required');
+            $this->form_validation->set_rules('body', '', 'xss_clean|required');
+            $this->form_validation->set_rules('order', '', 'xss_clean|required|is_natural');
 
             $this->form_validation->set_message('required', lang('fv_required'));
+            $this->form_validation->set_message('is_natural', lang('fv_is_natural'));
 
             if ($this->form_validation->run()) {
 
-                $data             = array();
-                $data['quote']    = $this->input->post('quote');
-                $data['quote_by'] = $this->input->post('quote_by');
+                $data          = array();
+                $data['label'] = $this->input->post('label');
+                $data['group'] = $this->input->post('group');
+                $data['body']  = $this->input->post('body');
+                $data['order'] = (int) $this->input->post('order');
 
                 if ($this->faq_model->update($this->data['faq']->id, $data)) {
 
