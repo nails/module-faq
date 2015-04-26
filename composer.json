@@ -1,0 +1,40 @@
+{
+    "name": "nailsapp/module-faq",
+    "keywords":
+    [
+        "Nails",
+        "Shed Collective",
+        "CodeIgniter",
+        "FAQ Module"
+    ],
+    "homepage": "http://nailsapp.co.uk/modules/faq",
+    "description": "This is the \"FAQ\" module for Nails.",
+    "license": "MIT",
+    "authors":
+    [
+        {
+            "name": "Pablo de la Pena",
+            "email": "p@shedcollective.org",
+            "homepage": "http://shedcollective.org",
+            "role": "Developer"
+        },
+        {
+            "name": "Gary Duncan",
+            "email": "g@shedcollective.org",
+            "homepage": "http://shedcollective.org",
+            "role": "Developer"
+        }
+    ],
+    "support":
+    {
+        "email": "hello@shedcollective.org"
+    },
+    "extra":
+    {
+        "nails" :
+        {
+            "moduleName": "faq",
+            "type": "module"
+        }
+    }
+}
