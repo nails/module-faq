@@ -97,6 +97,7 @@ class Faq extends \AdminController
         $sortColumns = array(
             $tablePrefix . '.created'  => 'Created Date',
             $tablePrefix . '.modified' => 'Modified Date',
+            $tablePrefix . '.group'    => 'group',
             $tablePrefix . '.order'    => 'Order'
         );
 
