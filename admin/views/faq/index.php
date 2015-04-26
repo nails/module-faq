@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th class="label"><?=lang('faqs_index_th_label')?></th>
+                    <th class="label"><?=lang('faqs_index_th_group')?></th>
                     <th class="order text-center"><?=lang('faqs_index_th_order')?></th>
                     <th class="actions"><?=lang('faqs_index_th_actions')?></th>
                 </tr>
@@ -27,6 +28,9 @@
                         echo '<tr>';
                             echo '<td class="label">';
                                 echo $faq->label;
+                            echo '</td>';
+                            echo '<td class="group">';
+                                echo $faq->group ? $faq->group : 'No Group';
                             echo '</td>';
                             echo '<td class="order text-center">';
                                 echo $faq->order;
@@ -53,7 +57,7 @@
 
                     ?>
                     <tr>
-                        <td colspan="2" class="no-data"><?=lang('faqs_index_no_faqs')?></td>
+                        <td colspan="3" class="no-data"><?=lang('faqs_index_no_faqs')?></td>
                     </tr>
                     <?php
                 }
