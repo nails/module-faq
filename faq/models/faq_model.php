@@ -12,8 +12,14 @@
 
 class NAILS_Faq_model extends NAILS_Model
 {
-    protected $table       = NAILS_DB_PREFIX . 'faq';
-    protected $tablePrefix = 'f';
+    /**
+     * Construct the model
+     */
+    public function __construct()
+    {
+        $this->table       = NAILS_DB_PREFIX . 'faq';
+        $this->tablePrefix = 'f';
+    }
 
     // --------------------------------------------------------------------------
 
