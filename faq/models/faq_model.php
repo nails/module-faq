@@ -17,6 +17,7 @@ class NAILS_Faq_model extends NAILS_Model
      */
     public function __construct()
     {
+        parent::__construct();
         $this->table       = NAILS_DB_PREFIX . 'faq';
         $this->tablePrefix = 'f';
     }
