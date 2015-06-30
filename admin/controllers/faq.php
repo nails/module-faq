@@ -167,13 +167,13 @@ class Faq extends \AdminController
 
             if ($this->form_validation->run()) {
 
-                $data          = array();
-                $data['label'] = $this->input->post('label');
-                $data['group'] = $this->input->post('group');
-                $data['body']  = $this->input->post('body');
-                $data['order'] = (int) $this->input->post('order');
+                $aInsertData          = array();
+                $aInsertData['label'] = $this->input->post('label');
+                $aInsertData['group'] = $this->input->post('group');
+                $aInsertData['body']  = $this->input->post('body');
+                $aInsertData['order'] = (int) $this->input->post('order');
 
-                if ($this->faq_model->create($data)) {
+                if ($this->faq_model->create($aInsertData)) {
 
                     $this->session->set_flashdata('success', lang('faqs_create_ok'));
                     redirect('admin/faq/faq/index');
