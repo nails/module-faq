@@ -1,12 +1,6 @@
 {
     "name": "nailsapp/module-faq",
-    "keywords":
-    [
-        "Nails",
-        "Shed Collective",
-        "CodeIgniter",
-        "FAQ Module"
-    ],
+    "keywords": ["Nails", "Shed Collective", "CodeIgniter", "FAQ Module"],
     "homepage": "http://nailsapp.co.uk/modules/faq",
     "description": "This is the \"FAQ\" module for Nails.",
     "license": "MIT",
