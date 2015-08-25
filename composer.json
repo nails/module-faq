@@ -29,6 +29,9 @@
     {
         "email": "hello@shedcollective.org"
     },
+    "require":
+    {
+    },
     "extra":
     {
         "nails" :
