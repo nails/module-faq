@@ -1,8 +1,8 @@
 <?php
 
-namespace Nails\Barcode\Library;
+namespace Nails\Faq\Library;
 
-class GeneratorTest extends \PHPUnit_Framework_TestCase
+class FaqTest extends \PHPUnit_Framework_TestCase
 {
     public function testFoo()
     {
