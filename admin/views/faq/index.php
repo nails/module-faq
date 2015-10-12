@@ -57,7 +57,7 @@
 
                     ?>
                     <tr>
-                        <td colspan="3" class="no-data"><?=lang('faqs_index_no_faqs')?></td>
+                        <td colspan="4" class="no-data"><?=lang('faqs_index_no_faqs')?></td>
                     </tr>
                     <?php
                 }

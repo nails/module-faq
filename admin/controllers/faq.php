@@ -12,6 +12,8 @@
 
 namespace Nails\Admin\Faq;
 
+use Nails\Factory;
+
 class Faq extends \AdminController
 {
     /**
@@ -58,7 +60,6 @@ class Faq extends \AdminController
 
         // --------------------------------------------------------------------------
 
-        $this->load->model('faq/faq_model');
         $this->lang->load('admin_faq');
     }
 
@@ -77,12 +78,16 @@ class Faq extends \AdminController
 
         // --------------------------------------------------------------------------
 
+        $oFaqModel = Factory::model('Faq', 'nailsapp/module-faq');
+
+        // --------------------------------------------------------------------------
+
         //  Set method info
         $this->data['page']->title = lang('faqs_index_title');
 
         // --------------------------------------------------------------------------
 
-        $tablePrefix = $this->faq_model->getTablePrefix();
+        $tablePrefix = $oFaqModel->getTablePrefix();
 
         //  Get pagination and search/sort variables
         $page      = $this->input->get('page')      ? $this->input->get('page')      : 0;
@@ -112,8 +117,8 @@ class Faq extends \AdminController
         );
 
         //  Get the items for the page
-        $totalRows          = $this->faq_model->count_all($data);
-        $this->data['faqs'] = $this->faq_model->get_all($page, $perPage, $data);
+        $totalRows          = $oFaqModel->count_all($data);
+        $this->data['faqs'] = $oFaqModel->get_all($page, $perPage, $data);
 
         //  Set Search and Pagination objects for the view
         $this->data['search']     = \Nails\Admin\Helper::searchObject(true, $sortColumns, $sortOn, $sortOrder, $perPage, $keywords);
@@ -173,7 +178,9 @@ class Faq extends \AdminController
                 $aInsertData['body']  = $this->input->post('body');
                 $aInsertData['order'] = (int) $this->input->post('order');
 
-                if ($this->faq_model->create($aInsertData)) {
+                $oFaqModel = Factory::model('Faq', 'nailsapp/module-faq');
+
+                if ($oFaqModel->create($aInsertData)) {
 
                     $this->session->set_flashdata('success', lang('faqs_create_ok'));
                     redirect('admin/faq/faq/index');
@@ -210,7 +217,9 @@ class Faq extends \AdminController
 
         // --------------------------------------------------------------------------
 
-        $this->data['faq'] = $this->faq_model->get_by_id($this->uri->segment(5));
+        $oFaqModel = Factory::model('Faq', 'nailsapp/module-faq');
+
+        $this->data['faq'] = $oFaqModel->get_by_id($this->uri->segment(5));
 
         if (!$this->data['faq']) {
 
@@ -245,7 +254,7 @@ class Faq extends \AdminController
                 $data['body']  = $this->input->post('body');
                 $data['order'] = (int) $this->input->post('order');
 
-                if ($this->faq_model->update($this->data['faq']->id, $data)) {
+                if ($oFaqModel->update($this->data['faq']->id, $data)) {
 
                     $this->session->set_flashdata('success', lang('faqs_edit_ok'));
                     redirect('admin/faq/faq/index');
@@ -282,7 +291,9 @@ class Faq extends \AdminController
 
         // --------------------------------------------------------------------------
 
-        $faq = $this->faq_model->get_by_id($this->uri->segment(5));
+        $oFaqModel = Factory::model('Faq', 'nailsapp/module-faq');
+
+        $faq = $oFaqModel->get_by_id($this->uri->segment(5));
 
         if (!$faq) {
 
@@ -292,7 +303,7 @@ class Faq extends \AdminController
 
         // --------------------------------------------------------------------------
 
-        if ($this->faq_model->delete($faq->id)) {
+        if ($oFaqModel->delete($faq->id)) {
 
             $this->session->set_flashdata('success', lang('faqs_delete_ok'));
 
