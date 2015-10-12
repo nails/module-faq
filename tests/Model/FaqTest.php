@@ -1,6 +1,6 @@
 <?php
 
-namespace Nails\Faq\Library;
+namespace Nails\Faq\Model;
 
 class FaqTest extends \PHPUnit_Framework_TestCase
 {
