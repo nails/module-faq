@@ -14,7 +14,9 @@ namespace Nails\Admin\Faq;
 
 use Nails\Factory;
 
-class Faq extends \AdminController
+use Nails\Admin\Controller\Base;
+
+class Faq extends Base
 {
     /**
      * Announces this controller's navGroups
