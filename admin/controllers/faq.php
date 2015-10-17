@@ -13,7 +13,7 @@
 namespace Nails\Admin\Faq;
 
 use Nails\Factory;
-
+use Nails\Admin\Helper;
 use Nails\Admin\Controller\Base;
 
 class Faq extends Base
@@ -123,13 +123,13 @@ class Faq extends Base
         $this->data['faqs'] = $oFaqModel->get_all($page, $perPage, $data);
 
         //  Set Search and Pagination objects for the view
-        $this->data['search']     = \Nails\Admin\Helper::searchObject(true, $sortColumns, $sortOn, $sortOrder, $perPage, $keywords);
-        $this->data['pagination'] = \Nails\Admin\Helper::paginationObject($page, $perPage, $totalRows);
+        $this->data['search']     = Helper::searchObject(true, $sortColumns, $sortOn, $sortOrder, $perPage, $keywords);
+        $this->data['pagination'] = Helper::paginationObject($page, $perPage, $totalRows);
 
         //  Add a header button
         if (userHasPermission('admin:faq:faq:create')) {
 
-             \Nails\Admin\Helper::addHeaderButton(
+             Helper::addHeaderButton(
                 'admin/faq/faq/create',
                 lang('faqs_nav_create')
             );
@@ -137,7 +137,7 @@ class Faq extends Base
 
         // --------------------------------------------------------------------------
 
-        \Nails\Admin\Helper::loadView('index');
+        Helper::loadView('index');
     }
 
     // --------------------------------------------------------------------------
@@ -201,7 +201,7 @@ class Faq extends Base
         // --------------------------------------------------------------------------
 
         //  Load views
-        \Nails\Admin\Helper::loadView('edit');
+        Helper::loadView('edit');
     }
 
     // --------------------------------------------------------------------------
@@ -275,7 +275,7 @@ class Faq extends Base
         // --------------------------------------------------------------------------
 
         //  Load views
-        \Nails\Admin\Helper::loadView('edit');
+        Helper::loadView('edit');
     }
 
     // --------------------------------------------------------------------------
