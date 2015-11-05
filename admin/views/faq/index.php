@@ -45,7 +45,7 @@
 
                                 if (userHasPermission('admin:faq:faq:delete')) :
 
-                                    echo anchor('admin/faq/faq/delete/' . $faq->id, lang('action_delete'), 'class="awesome red small confirm" data-title="Are you sure?" data-body="You cannot undo this action"');
+                                    echo anchor('admin/faq/faq/delete/' . $faq->id, lang('action_delete'), 'class="awesome red small confirm" data-body="You cannot undo this action"');
 
                                 endif;
 
