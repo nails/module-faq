@@ -162,17 +162,16 @@ class Faq extends Base
 
         if ($this->input->post()) {
 
-            $this->load->library('form_validation');
+            $oFormValidation = Factory::service('FormValidation');
+            $oFormValidation->set_rules('label', '', 'xss_clean|required');
+            $oFormValidation->set_rules('group', '', 'xss_clean|required');
+            $oFormValidation->set_rules('body', '', 'xss_clean|required');
+            $oFormValidation->set_rules('order', '', 'xss_clean|required|is_natural');
 
-            $this->form_validation->set_rules('label', '', 'xss_clean|required');
-            $this->form_validation->set_rules('group', '', 'xss_clean|required');
-            $this->form_validation->set_rules('body', '', 'xss_clean|required');
-            $this->form_validation->set_rules('order', '', 'xss_clean|required|is_natural');
+            $oFormValidation->set_message('required', lang('fv_required'));
+            $oFormValidation->set_message('is_natural', lang('fv_is_natural'));
 
-            $this->form_validation->set_message('required', lang('fv_required'));
-            $this->form_validation->set_message('is_natural', lang('fv_is_natural'));
-
-            if ($this->form_validation->run()) {
+            if ($oFormValidation->run()) {
 
                 $aInsertData          = array();
                 $aInsertData['label'] = $this->input->post('label');
@@ -238,17 +237,16 @@ class Faq extends Base
 
         if ($this->input->post()) {
 
-            $this->load->library('form_validation');
+            $oFormValidation = Factory::service('FormValidation');
+            $oFormValidation->set_rules('label', '', 'xss_clean|required');
+            $oFormValidation->set_rules('group', '', 'xss_clean|required');
+            $oFormValidation->set_rules('body', '', 'xss_clean|required');
+            $oFormValidation->set_rules('order', '', 'xss_clean|required|is_natural');
 
-            $this->form_validation->set_rules('label', '', 'xss_clean|required');
-            $this->form_validation->set_rules('group', '', 'xss_clean|required');
-            $this->form_validation->set_rules('body', '', 'xss_clean|required');
-            $this->form_validation->set_rules('order', '', 'xss_clean|required|is_natural');
+            $oFormValidation->set_message('required', lang('fv_required'));
+            $oFormValidation->set_message('is_natural', lang('fv_is_natural'));
 
-            $this->form_validation->set_message('required', lang('fv_required'));
-            $this->form_validation->set_message('is_natural', lang('fv_is_natural'));
-
-            if ($this->form_validation->run()) {
+            if ($oFormValidation->run()) {
 
                 $data          = array();
                 $data['label'] = $this->input->post('label');
