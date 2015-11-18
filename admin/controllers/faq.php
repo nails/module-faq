@@ -26,7 +26,9 @@ class Faq extends Base
     {
         if (userHasPermission('admin:faq:faq:manage')) {
 
-            $navGroup = new \Nails\Admin\Nav('FAQs', 'fa-question-circle');
+            $navGroup = Factory::factory('Nav', 'nailsapp/module-admin');
+            $navGroup->setLabel('FAQs');
+            $navGroup->setIcon('fa-question-circle');
             $navGroup->addAction('Manage FAQs');
 
             return $navGroup;
