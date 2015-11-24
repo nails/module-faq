@@ -121,8 +121,8 @@ class Faq extends Base
         );
 
         //  Get the items for the page
-        $totalRows          = $oFaqModel->count_all($data);
-        $this->data['faqs'] = $oFaqModel->get_all($page, $perPage, $data);
+        $totalRows          = $oFaqModel->countAll($data);
+        $this->data['faqs'] = $oFaqModel->getAll($page, $perPage, $data);
 
         //  Set Search and Pagination objects for the view
         $this->data['search']     = Helper::searchObject(true, $sortColumns, $sortOn, $sortOrder, $perPage, $keywords);
@@ -131,7 +131,7 @@ class Faq extends Base
         //  Add a header button
         if (userHasPermission('admin:faq:faq:create')) {
 
-             Helper::addHeaderButton(
+            Helper::addHeaderButton(
                 'admin/faq/faq/create',
                 lang('faqs_nav_create')
             );
@@ -222,7 +222,7 @@ class Faq extends Base
 
         $oFaqModel = Factory::model('Faq', 'nailsapp/module-faq');
 
-        $this->data['faq'] = $oFaqModel->get_by_id($this->uri->segment(5));
+        $this->data['faq'] = $oFaqModel->getById($this->uri->segment(5));
 
         if (!$this->data['faq']) {
 
@@ -295,7 +295,7 @@ class Faq extends Base
 
         $oFaqModel = Factory::model('Faq', 'nailsapp/module-faq');
 
-        $faq = $oFaqModel->get_by_id($this->uri->segment(5));
+        $faq = $oFaqModel->getById($this->uri->segment(5));
 
         if (!$faq) {
 
