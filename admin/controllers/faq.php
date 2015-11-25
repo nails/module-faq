@@ -26,12 +26,12 @@ class Faq extends Base
     {
         if (userHasPermission('admin:faq:faq:manage')) {
 
-            $navGroup = Factory::factory('Nav', 'nailsapp/module-admin');
-            $navGroup->setLabel('FAQs');
-            $navGroup->setIcon('fa-question-circle');
-            $navGroup->addAction('Manage FAQs');
+            $oNavGroup = Factory::factory('Nav', 'nailsapp/module-admin');
+            $oNavGroup->setLabel('FAQs');
+            $oNavGroup->setIcon('fa-question-circle');
+            $oNavGroup->addAction('Manage FAQs');
 
-            return $navGroup;
+            return $oNavGroup;
         }
     }
 
