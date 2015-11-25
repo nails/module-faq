@@ -37,17 +37,22 @@
                             echo '</td>';
                             echo '<td class="actions">';
 
-                                if (userHasPermission('admin:faq:faq:edit')) :
+                                if (userHasPermission('admin:faq:faq:edit')) {
 
-                                    echo anchor('admin/faq/faq/edit/' . $faq->id, lang('action_edit'), 'class="awesome small"');
+                                    echo anchor(
+                                        'admin/faq/faq/edit/' . $faq->id,
+                                        lang('action_edit'),
+                                        'class="btn btn-xs btn-primary"');
+                                }
 
-                                endif;
+                                if (userHasPermission('admin:faq:faq:delete')) {
 
-                                if (userHasPermission('admin:faq:faq:delete')) :
-
-                                    echo anchor('admin/faq/faq/delete/' . $faq->id, lang('action_delete'), 'class="awesome red small confirm" data-body="You cannot undo this action"');
-
-                                endif;
+                                    echo anchor(
+                                        'admin/faq/faq/delete/' . $faq->id,
+                                        lang('action_delete'),
+                                        'class="btn btn-xs btn-danger confirm" data-body="You cannot undo this action"'
+                                    );
+                                }
 
                             echo '</td>';
                         echo '<tr>';
@@ -57,7 +62,9 @@
 
                     ?>
                     <tr>
-                        <td colspan="4" class="no-data"><?=lang('faqs_index_no_faqs')?></td>
+                        <td colspan="4" class="no-data">
+                            <?=lang('faqs_index_no_faqs')?>
+                        </td>
                     </tr>
                     <?php
                 }
