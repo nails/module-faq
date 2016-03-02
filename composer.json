@@ -42,7 +42,8 @@
         "nails" :
         {
             "moduleName": "faq",
-            "type": "module"
+            "type": "module",
+            "namespace": "Nails\\Faq\\"
         }
     }
 }
