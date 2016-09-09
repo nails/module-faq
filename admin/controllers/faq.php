@@ -91,12 +91,12 @@ class Faq extends Base
 
         // --------------------------------------------------------------------------
 
-        $tablePrefix = $oFaqModel->getTableAlias();
+        $tableAlias = $oFaqModel->getTableAlias();
 
         //  Get pagination and search/sort variables
         $page      = $this->input->get('page')      ? $this->input->get('page')      : 0;
         $perPage   = $this->input->get('perPage')   ? $this->input->get('perPage')   : 50;
-        $sortOn    = $this->input->get('sortOn')    ? $this->input->get('sortOn')    : $tablePrefix . '.order';
+        $sortOn    = $this->input->get('sortOn')    ? $this->input->get('sortOn')    : $tableAlias . '.order';
         $sortOrder = $this->input->get('sortOrder') ? $this->input->get('sortOrder') : 'asc';
         $keywords  = $this->input->get('keywords')  ? $this->input->get('keywords')  : '';
 
@@ -104,10 +104,10 @@ class Faq extends Base
 
         //  Define the sortable columns
         $sortColumns = array(
-            $tablePrefix . '.created'  => 'Created Date',
-            $tablePrefix . '.modified' => 'Modified Date',
-            $tablePrefix . '.group'    => 'group',
-            $tablePrefix . '.order'    => 'Order'
+            $tableAlias . '.created'  => 'Created Date',
+            $tableAlias . '.modified' => 'Modified Date',
+            $tableAlias . '.group'    => 'group',
+            $tableAlias . '.order'    => 'Order'
         );
 
         // --------------------------------------------------------------------------

@@ -23,7 +23,7 @@ class Faq extends Base
     {
         parent::__construct();
         $this->table       = NAILS_DB_PREFIX . 'faq';
-        $this->tablePrefix = 'f';
+        $this->tableAlias = 'f';
     }
 
     // --------------------------------------------------------------------------
@@ -44,11 +44,11 @@ class Faq extends Base
             }
 
             $data['or_like'][] = array(
-                'column' => $this->tablePrefix . '.label',
+                'column' => $this->tableAlias . '.label',
                 'value'  => $data['keywords']
             );
             $data['or_like'][] = array(
-                'column' => $this->tablePrefix . '.body',
+                'column' => $this->tableAlias . '.body',
                 'value'  => $data['keywords']
             );
         }
