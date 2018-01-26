@@ -13,47 +13,36 @@
 namespace Nails\Faq\Model;
 
 use Nails\Common\Model\Base;
+use Nails\Factory;
 
 class Faq extends Base
 {
     /**
-     * Construct the model
+     * Faq constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->table       = NAILS_DB_PREFIX . 'faq';
-        $this->tableAlias = 'f';
+        $this->table              = NAILS_DB_PREFIX . 'faq';
+        $this->searchableFields[] = 'body';
     }
 
     // --------------------------------------------------------------------------
 
     /**
-     * This method applies the conditionals which are common across the get_*()
-     * methods and the count() method.
-     * @param  array $data Data passed from the calling method
-     * @return void
-     **/
-    protected function getCountCommon($data = array())
+     * Describes the fields for this model
+     *
+     * @return array
+     */
+    public function describeFields()
     {
-        if (!empty($data['keywords'])) {
+        $aData = parent::describeFields();
 
-            if (empty($data['or_like'])) {
+        $aData['label']->validation[] = 'required';
+        $aData['body']->validation[]  = 'required';
+        $aData['body']->type          = 'wysiwyg';
 
-                $data['or_like'] = array();
-            }
-
-            $data['or_like'][] = array(
-                'column' => $this->tableAlias . '.label',
-                'value'  => $data['keywords']
-            );
-            $data['or_like'][] = array(
-                'column' => $this->tableAlias . '.body',
-                'value'  => $data['keywords']
-            );
-        }
-
-        parent::getCountCommon($data);
+        return $aData;
     }
 
     // --------------------------------------------------------------------------
@@ -64,14 +53,15 @@ class Faq extends Base
      */
     public function getGroups()
     {
-        $this->db->select('DISTINCT(`group`) `group`');
-        $groups = $this->db->get($this->table)->result();
-        $out    = array('No Group');
+        $oDb = Factory::service('Database');
+        $oDb->select('DISTINCT(`group`) `group`');
+        $aGroups = $oDb->get($this->table)->result();
+        $aOut    = ['No Group'];
 
-        foreach ($groups as $group) {
-            $out[] = $group->group ? $group->group : 'No Group';
+        foreach ($aGroups as $group) {
+            $aOut[] = $group->group ? $group->group : 'No Group';
         }
 
-        return array_unique($out);
+        return array_unique($aOut);
     }
 }
