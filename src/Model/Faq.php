@@ -32,11 +32,13 @@ class Faq extends Base
     /**
      * Describes the fields for this model
      *
+     * @param  string $sTable The database table to query
+     *
      * @return array
      */
-    public function describeFields()
+    public function describeFields($sTable = null)
     {
-        $aData = parent::describeFields();
+        $aData = parent::describeFields($sTable);
 
         $aData['label']->validation[] = 'required';
         $aData['body']->validation[]  = 'required';
