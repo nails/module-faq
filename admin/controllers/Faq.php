@@ -21,4 +21,18 @@ class Faq extends DefaultController
     const CONFIG_SIDEBAR_ICON   = 'fa-question-circle';
     const CONFIG_TITLE_SINGLE   = 'FAQ';
     const CONFIG_TITLE_PLURAL   = 'FAQs';
+
+    // --------------------------------------------------------------------------
+
+    /**
+     * Extract data from post variable
+     * @return array
+     */
+    protected function getPostObject()
+    {
+        $aData              = parent::getPostObject();
+        $aData['order']     = (int) getFromArray('order', $aData);
+        $aData['is_active'] = (bool) getFromArray('is_active', $aData);
+        return $aData;
+    }
 }
