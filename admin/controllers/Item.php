@@ -13,9 +13,9 @@ namespace Nails\Admin\Faq;
 
 use Nails\Admin\Controller\DefaultController;
 
-class Faq extends DefaultController
+class Item extends DefaultController
 {
-    const CONFIG_MODEL_NAME     = 'Faq';
+    const CONFIG_MODEL_NAME     = 'Item';
     const CONFIG_MODEL_PROVIDER = 'nailsapp/module-faq';
     const CONFIG_SIDEBAR_GROUP  = 'FAQs';
     const CONFIG_SIDEBAR_ICON   = 'fa-question-circle';

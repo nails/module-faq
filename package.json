@@ -1,0 +1,17 @@
+{
+  "name": "nailsapp-module-faq",
+  "version": "0.0.0",
+  "description": "The Nails FAQ Module",
+  "main": "assets/js/admin.faq.min.js",
+  "repository": "https://github.com/nailsapp/module-faq",
+  "author": "Pablo de la Peña <p@nailsapp.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.14.0",
+    "webpack-command": "^0.3.1"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "watch": "webpack --watch"
+  }
+}

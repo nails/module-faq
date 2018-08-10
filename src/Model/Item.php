@@ -13,18 +13,30 @@
 namespace Nails\Faq\Model;
 
 use Nails\Common\Model\Base;
-use Nails\Factory;
+use Nails\Common\Traits\Model\Sortable;
 
-class Faq extends Base
+class Item extends Base
 {
+    use Sortable;
+
+    // --------------------------------------------------------------------------
+
     /**
      * Faq constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->table              = NAILS_DB_PREFIX . 'faq';
+        $this->table              = NAILS_DB_PREFIX . 'faq_item';
         $this->searchableFields[] = 'body';
+        $this->addExpandableField([
+            'trigger'   => 'group',
+            'type'      => self::EXPANDABLE_TYPE_SINGLE,
+            'property'  => 'group',
+            'model'     => 'Group',
+            'provider'  => 'nailsapp/module-faq',
+            'id_column' => 'group_id',
+        ]);
     }
 
     // --------------------------------------------------------------------------
@@ -43,27 +55,8 @@ class Faq extends Base
         $aData['label']->validation[] = 'required';
         $aData['body']->validation[]  = 'required';
         $aData['body']->type          = 'wysiwyg';
+        $aData['group_id']->class     = 'search--faq-group';
 
         return $aData;
-    }
-
-    // --------------------------------------------------------------------------
-
-    /**
-     * Returns an array of the groups used in the FAQs
-     * @return array
-     */
-    public function getGroups()
-    {
-        $oDb = Factory::service('Database');
-        $oDb->select('DISTINCT(`group`) `group`');
-        $aGroups = $oDb->get($this->table)->result();
-        $aOut    = ['No Group'];
-
-        foreach ($aGroups as $group) {
-            $aOut[] = $group->group ? $group->group : 'No Group';
-        }
-
-        return array_unique($aOut);
     }
 }
