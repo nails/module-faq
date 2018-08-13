@@ -2,7 +2,7 @@
 
 namespace Nails\Faq\Model;
 
-class FaqTest extends \PHPUnit_Framework_TestCase
+class ItemTest extends \PHPUnit_Framework_TestCase
 {
     public function testFoo()
     {

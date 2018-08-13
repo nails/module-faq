@@ -55,7 +55,9 @@ class Item extends Base
         $aData['label']->validation[] = 'required';
         $aData['body']->validation[]  = 'required';
         $aData['body']->type          = 'wysiwyg';
-        $aData['group_id']->class     = 'search--faq-group';
+        $aData['group_id']->label     = 'Group';
+        $aData['group_id']->class     = 'js-searcher';
+        $aData['group_id']->data      = ['api' => 'faq/group'];
 
         return $aData;
     }
