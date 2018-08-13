@@ -33,10 +33,10 @@ class Migration2 extends Base
                 CONSTRAINT `{{NAILS_DB_PREFIX}}faq_group_ibfk_2` FOREIGN KEY (`modified_by`) REFERENCES `{{NAILS_DB_PREFIX}}user` (`id`) ON DELETE SET NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
         ");
-        $this->query("RENAME TABLE `nails_faq` TO `nails_faq_item`;");
-        //  Migrate to groups table
-        $this-query("ALTER TABLE `nails_faq_item` CHANGE `group` `group_id` INT(11)  UNSIGNED  NULL;");
-        $this-query("ALTER TABLE `nails_faq_item` ADD FOREIGN KEY (`group_id`) REFERENCES `nails_faq_group` (`id`) ON DELETE SET NULL;");
-        //  Add associations
+        $this->query("RENAME TABLE `{{NAILS_DB_PREFIX}}faq` TO `{{NAILS_DB_PREFIX}}faq_item`;");
+        $this->query("INSERT INTO `{{NAILS_DB_PREFIX}}faq_group` (`label`, `created`, `modified`) SELECT DISTINCT(`group`) `label`, NOW() `created`, NOW() `modified` FROM `{{NAILS_DB_PREFIX}}faq_item`;");
+        $this->query("UPDATE `{{NAILS_DB_PREFIX}}faq_item` `item` SET `item`.`group` = (SELECT `group`.`id` FROM `{{NAILS_DB_PREFIX}}faq_group` `group` WHERE `group`.`label` = `item`.`group`);");
+        $this->query("ALTER TABLE `{{NAILS_DB_PREFIX}}faq_item` CHANGE `group` `group_id` INT(11)  UNSIGNED  NULL;");
+        $this->query("ALTER TABLE `{{NAILS_DB_PREFIX}}faq_item` ADD FOREIGN KEY (`group_id`) REFERENCES `{{NAILS_DB_PREFIX}}faq_group` (`id`) ON DELETE SET NULL;");
     }
 }
