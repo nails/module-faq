@@ -1,4 +1,4 @@
-#GEO-IP Module for Nails
+# FAQ Module for Nails
 
 This is the FAQ module for Nails, it brings FAQ functionality to Nails.
 
