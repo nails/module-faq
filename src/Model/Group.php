@@ -28,7 +28,7 @@ class Group extends Base
             'type'      => self::EXPANDABLE_TYPE_MANY,
             'property'  => 'items',
             'model'     => 'Item',
-            'provider'  => 'nailsapp/module-faq',
+            'provider'  => 'nails/module-faq',
             'id_column' => 'group_id',
         ]);
     }

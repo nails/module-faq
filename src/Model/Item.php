@@ -34,7 +34,7 @@ class Item extends Base
             'type'      => self::EXPANDABLE_TYPE_SINGLE,
             'property'  => 'group',
             'model'     => 'Group',
-            'provider'  => 'nailsapp/module-faq',
+            'provider'  => 'nails/module-faq',
             'id_column' => 'group_id',
         ]);
     }

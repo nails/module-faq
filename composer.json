@@ -1,5 +1,5 @@
 {
-    "name": "nailsapp/module-faq",
+    "name": "nails/module-faq",
     "keywords": [
         "Nails",
         "Shed Collective",
@@ -29,7 +29,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "nailsapp/common": "dev-develop"
+        "nails/common": "dev-develop"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*"
@@ -45,7 +45,7 @@
             "type": "module",
             "namespace": "Nails\\Faq\\",
             "data": {
-                "nailsapp/module-api": {
+                "nails/module-api": {
                     "namespace": "faq"
                 }
             }
