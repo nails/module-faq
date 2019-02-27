@@ -35,9 +35,10 @@ class Item extends DefaultController
 
     /**
      * Extract data from post variable
+     *
      * @return array
      */
-    protected function getPostObject()
+    protected function getPostObject(): array
     {
         $aData              = parent::getPostObject();
         $aData['order']     = (int) getFromArray('order', $aData);
@@ -47,7 +48,7 @@ class Item extends DefaultController
 
     // --------------------------------------------------------------------------
 
-    protected function indexDropdownFilters()
+    protected function indexDropdownFilters(): array
     {
         $oGroupModel = Factory::model('Group', 'nails/module-faq');
         $aGroups     = $oGroupModel->getAll();
