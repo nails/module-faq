@@ -24,11 +24,11 @@ class Item extends DefaultController
     const CONFIG_TITLE_PLURAL   = 'FAQs';
     const CONFIG_INDEX_DATA     = ['expand' => ['group']];
     const CONFIG_INDEX_FIELDS   = [
-        'label'       => 'Label',
-        'group.label' => 'Group',
-        'created'     => 'Created',
-        'modified'    => 'Modified',
-        'modified_by' => 'Modified By',
+        'Label'       => 'label',
+        'Group'       => 'group.label',
+        'Created'     => 'created',
+        'Modified'    => 'modified',
+        'Modified By' => 'modified_by',
     ];
 
     // --------------------------------------------------------------------------
@@ -57,8 +57,8 @@ class Item extends DefaultController
         if (!empty($aGroups)) {
 
             $oFilter = Factory::factory('IndexFilter', 'nails/module-admin')
-                              ->setLabel('Group')
-                              ->setColumn('group_id');
+                ->setLabel('Group')
+                ->setColumn('group_id');
 
             $oFilter->addOption('All Groups');
             foreach ($aGroups as $oGroup) {
