@@ -13,24 +13,63 @@
 namespace Nails\Faq\Model;
 
 use Nails\Common\Model\Base;
+use Nails\Common\Traits\Model\Sortable;
 
+/**
+ * Class Group
+ *
+ * @package Nails\Faq\Model
+ */
 class Group extends Base
 {
+    use Sortable;
+
+    // --------------------------------------------------------------------------
+
+    /**
+     * The table this model represents
+     *
+     * @var string
+     */
+    const TABLE = NAILS_DB_PREFIX . 'faq_group';
+
+    /**
+     * Whether to automatically set slugs or not
+     *
+     * @var bool
+     */
+    const AUTO_SET_SLUG = true;
+
+    /**
+     * The name of the resource to use (as passed to \Nails\Factory::resource())
+     *
+     * @var string
+     */
+    const RESOURCE_NAME = 'Group';
+
+    /**
+     * The provider of the resource to use (as passed to \Nails\Factory::resource())
+     *
+     * @var string
+     */
+    const RESOURCE_PROVIDER = 'nails/module-faq';
+
+    // --------------------------------------------------------------------------
+
     /**
      * Group constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->table = NAILS_DB_PREFIX . 'faq_group';
-        $this->addExpandableField([
-            'trigger'   => 'items',
-            'type'      => self::EXPANDABLE_TYPE_MANY,
-            'property'  => 'items',
-            'model'     => 'Item',
-            'provider'  => 'nails/module-faq',
-            'id_column' => 'group_id',
-        ]);
+        $this
+            ->addExpandableField([
+                'trigger'   => 'items',
+                'type'      => self::EXPANDABLE_TYPE_MANY,
+                'model'     => 'Item',
+                'provider'  => 'nails/module-faq',
+                'id_column' => 'group_id',
+            ]);
     }
 
     // --------------------------------------------------------------------------
@@ -38,7 +77,7 @@ class Group extends Base
     /**
      * Describes the fields for this model
      *
-     * @param  string $sTable The database table to query
+     * @param string $sTable The database table to query
      *
      * @return array
      */
