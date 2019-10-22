@@ -90,7 +90,7 @@ class Item extends Base
         $aData['body']->type          = 'wysiwyg';
         $aData['group_id']->label     = 'Group';
         $aData['group_id']->class     = 'js-searcher';
-        $aData['group_id']->data      = ['api' => 'faq/group'];
+        $aData['group_id']->data      = ['api' => 'faq/group', 'min-length' => 0];
 
         return $aData;
     }
