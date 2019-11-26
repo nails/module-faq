@@ -14,6 +14,11 @@ namespace Nails\Admin\Faq;
 use Nails\Admin\Controller\DefaultController;
 use Nails\Factory;
 
+/**
+ * Class Item
+ *
+ * @package Nails\Admin\Faq
+ */
 class Item extends DefaultController
 {
     const CONFIG_MODEL_NAME     = 'Item';
@@ -29,6 +34,10 @@ class Item extends DefaultController
         'Created'     => 'created',
         'Modified'    => 'modified',
         'Modified By' => 'modified_by',
+    ];
+    const CONFIG_SORT_DATA      = ['expand' => ['group']];
+    const CONFIG_SORT_COLUMNS   = [
+        'Group' => 'group.label',
     ];
 
     // --------------------------------------------------------------------------
