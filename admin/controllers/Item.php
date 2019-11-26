@@ -50,8 +50,8 @@ class Item extends DefaultController
     protected function getPostObject(): array
     {
         $aData              = parent::getPostObject();
-        $aData['order']     = (int) getFromArray('order', $aData);
         $aData['is_active'] = (bool) getFromArray('is_active', $aData);
+
         return $aData;
     }
 
