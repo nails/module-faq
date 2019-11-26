@@ -12,6 +12,9 @@
 namespace Nails\Admin\Faq;
 
 use Nails\Admin\Controller\DefaultController;
+use Nails\Admin\Factory\IndexFilter;
+use Nails\Common\Exception\FactoryException;
+use Nails\Common\Exception\ModelException;
 use Nails\Factory;
 
 /**
@@ -30,6 +33,7 @@ class Item extends DefaultController
     const CONFIG_INDEX_DATA     = ['expand' => ['group']];
     const CONFIG_INDEX_FIELDS   = [
         'Label'       => 'label',
+        'Active'      => 'is_active',
         'Group'       => 'group.label',
         'Created'     => 'created',
         'Modified'    => 'modified',
@@ -57,14 +61,22 @@ class Item extends DefaultController
 
     // --------------------------------------------------------------------------
 
+    /**
+     * @return array
+     * @throws FactoryException
+     * @throws ModelException
+     */
     protected function indexDropdownFilters(): array
     {
+        /** @var \Nails\Faq\Model\Group $oGroupModel */
         $oGroupModel = Factory::model('Group', 'nails/module-faq');
-        $aGroups     = $oGroupModel->getAll();
-        $aFilters    = parent::indexDropdownFilters();
+        /** @var \Nails\Faq\Resource\Group[] $aGroups */
+        $aGroups  = $oGroupModel->getAll();
+        $aFilters = parent::indexDropdownFilters();
 
         if (!empty($aGroups)) {
 
+            /** @var IndexFilter $oFilter */
             $oFilter = Factory::factory('IndexFilter', 'nails/module-admin')
                 ->setLabel('Group')
                 ->setColumn('group_id');
@@ -77,6 +89,25 @@ class Item extends DefaultController
 
             $aFilters[] = $oFilter;
         }
+
+        return $aFilters;
+    }
+
+    // --------------------------------------------------------------------------
+
+    /**
+     * @return array
+     * @throws FactoryException
+     */
+    protected function indexCheckboxFilters(): array
+    {
+        $aFilters = parent::indexCheckboxFilters();
+
+        $aFilters[] = Factory::factory('IndexFilter', 'nails/module-admin')
+            ->setLabel('Status')
+            ->setColumn('is_active')
+            ->addOption('Active', true, true)
+            ->addOption('Inactive', false, true);
 
         return $aFilters;
     }
