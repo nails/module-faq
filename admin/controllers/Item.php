@@ -77,7 +77,7 @@ class Item extends DefaultController
         if (!empty($aGroups)) {
 
             /** @var IndexFilter $oFilter */
-            $oFilter = Factory::factory('IndexFilter', 'nails/module-admin')
+            $oFilter = Factory::factory('IndexFilter', \Nails\Admin\Constants::MODULE_SLUG)
                 ->setLabel('Group')
                 ->setColumn('group_id');
 
@@ -103,7 +103,7 @@ class Item extends DefaultController
     {
         $aFilters = parent::indexCheckboxFilters();
 
-        $aFilters[] = Factory::factory('IndexFilter', 'nails/module-admin')
+        $aFilters[] = Factory::factory('IndexFilter', \Nails\Admin\Constants::MODULE_SLUG)
             ->setLabel('Status')
             ->setColumn('is_active')
             ->addOption('Active', true, true)
