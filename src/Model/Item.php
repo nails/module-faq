@@ -14,6 +14,7 @@ namespace Nails\Faq\Model;
 
 use Nails\Common\Model\Base;
 use Nails\Common\Traits\Model\Sortable;
+use Nails\Faq\Constants;
 
 /**
  * Class Item
@@ -52,7 +53,7 @@ class Item extends Base
      *
      * @var string
      */
-    const RESOURCE_PROVIDER = 'nails/module-faq';
+    const RESOURCE_PROVIDER = Constants::MODULE_SLUG;
 
     // --------------------------------------------------------------------------
 
@@ -67,7 +68,7 @@ class Item extends Base
             ->addExpandableField([
                 'trigger'   => 'group',
                 'model'     => 'Group',
-                'provider'  => 'nails/module-faq',
+                'provider'  => Constants::MODULE_SLUG,
                 'id_column' => 'group_id',
             ]);
     }

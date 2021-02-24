@@ -14,6 +14,7 @@ namespace Nails\Faq\Model;
 
 use Nails\Common\Model\Base;
 use Nails\Common\Traits\Model\Sortable;
+use Nails\Faq\Constants;
 
 /**
  * Class Group
@@ -52,7 +53,7 @@ class Group extends Base
      *
      * @var string
      */
-    const RESOURCE_PROVIDER = 'nails/module-faq';
+    const RESOURCE_PROVIDER = Constants::MODULE_SLUG;
 
     // --------------------------------------------------------------------------
 
@@ -67,7 +68,7 @@ class Group extends Base
                 'trigger'   => 'items',
                 'type'      => self::EXPANDABLE_TYPE_MANY,
                 'model'     => 'Item',
-                'provider'  => 'nails/module-faq',
+                'provider'  => Constants::MODULE_SLUG,
                 'id_column' => 'group_id',
             ]);
     }

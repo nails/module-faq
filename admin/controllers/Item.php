@@ -16,6 +16,7 @@ use Nails\Admin\Factory\IndexFilter;
 use Nails\Common\Exception\FactoryException;
 use Nails\Common\Exception\ModelException;
 use Nails\Factory;
+use Nails\Faq\Constants;
 
 /**
  * Class Item
@@ -25,7 +26,7 @@ use Nails\Factory;
 class Item extends DefaultController
 {
     const CONFIG_MODEL_NAME     = 'Item';
-    const CONFIG_MODEL_PROVIDER = 'nails/module-faq';
+    const CONFIG_MODEL_PROVIDER = Constants::MODULE_SLUG;
     const CONFIG_SIDEBAR_GROUP  = 'FAQs';
     const CONFIG_SIDEBAR_ICON   = 'fa-question-circle';
     const CONFIG_TITLE_SINGLE   = 'FAQ';
@@ -69,7 +70,7 @@ class Item extends DefaultController
     protected function indexDropdownFilters(): array
     {
         /** @var \Nails\Faq\Model\Group $oGroupModel */
-        $oGroupModel = Factory::model('Group', 'nails/module-faq');
+        $oGroupModel = Factory::model('Group', Constants::MODULE_SLUG);
         /** @var \Nails\Faq\Resource\Group[] $aGroups */
         $aGroups  = $oGroupModel->getAll();
         $aFilters = parent::indexDropdownFilters();
