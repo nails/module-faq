@@ -5,7 +5,7 @@
  * Started:     11/10/2019
  */
 
-namespace Nails\Database\Migration\Nails\ModuleFaq;
+namespace Nails\Faq\Database\Migration;
 
 use Exception;
 use Nails\Common\Console\Migrate\Base;

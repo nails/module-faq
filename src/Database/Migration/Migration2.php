@@ -6,7 +6,7 @@
  * Finalised:   10/08/2018
  */
 
-namespace Nails\Database\Migration\Nails\ModuleFaq;
+namespace Nails\Faq\Database\Migration;
 
 use Nails\Common\Console\Migrate\Base;
 
