@@ -63,7 +63,6 @@ class Item extends Base
     public function __construct()
     {
         parent::__construct();
-        $this->searchableFields[] = 'body';
         $this
             ->addExpandableField([
                 'trigger'   => 'group',
@@ -71,6 +70,22 @@ class Item extends Base
                 'provider'  => Constants::MODULE_SLUG,
                 'id_column' => 'group_id',
             ]);
+    }
+
+    // --------------------------------------------------------------------------
+
+    /**
+     * Returns the searchable columns for this module
+     *
+     * @return string[]
+     */
+    public function getSearchableColumns(): array
+    {
+        return [
+            'id',
+            'label',
+            'body',
+        ];
     }
 
     // --------------------------------------------------------------------------
