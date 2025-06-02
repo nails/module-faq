@@ -86,7 +86,8 @@ class Group extends Base
     {
         $aData = parent::describeFields($sTable);
 
-        $aData['label']->validation[] = 'required';
+        $aData['label']
+            ->setIsRequired(true);
 
         return $aData;
     }
