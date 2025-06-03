@@ -55,6 +55,10 @@ class Item extends Base
      */
     const RESOURCE_PROVIDER = Constants::MODULE_SLUG;
 
+    const FIELD_CLASSES = [
+        'body' => 'ModelFieldWysiwyg',
+    ];
+
     // --------------------------------------------------------------------------
 
     /**
@@ -101,12 +105,16 @@ class Item extends Base
     {
         $aData = parent::describeFields($sTable);
 
-        $aData['label']->validation[] = 'required';
-        $aData['body']->validation[]  = 'required';
-        $aData['body']->type          = 'wysiwyg';
-        $aData['group_id']->label     = 'Group';
-        $aData['group_id']->class     = 'js-searcher';
-        $aData['group_id']->data      = ['api' => 'faq/group', 'min-length' => 0];
+        $aData['label']
+            ->setIsRequired(true);
+
+        $aData['body']
+            ->setIsRequired(true);
+
+        $aData['group_id']
+            ->setLabel('Group')
+            ->setClass('js-searcher')
+            ->setData(['api' => 'faq/group', 'min-length' => 0]);
 
         return $aData;
     }
