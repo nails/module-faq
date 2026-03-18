@@ -3,7 +3,7 @@
 namespace Nails\Faq\Resource;
 
 use Nails\Common\Resource\Entity;
-use Nails\Common\Resource\ExpandableField;
+use Nails\Common\Resource\ExpandableFieldData;
 use Nails\Faq\Resource;
 
 /**
@@ -31,7 +31,7 @@ class Group extends Entity
     /**
      * The FAQ items (expandable field)
      *
-     * @var ExpandableField
+     * @var ExpandableFieldData
      */
     public $items;
 }
