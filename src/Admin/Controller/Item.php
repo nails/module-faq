@@ -9,7 +9,7 @@
  * @author      Nails Dev Team
  */
 
-namespace Nails\Admin\Faq;
+namespace Nails\Faq\Admin\Controller;
 
 use Nails\Admin\Controller\DefaultController;
 use Nails\Admin\Factory\IndexFilter;
@@ -21,7 +21,7 @@ use Nails\Faq\Constants;
 /**
  * Class Item
  *
- * @package Nails\Admin\Faq
+ * @package Nails\Faq\Admin\Controller
  */
 class Item extends DefaultController
 {

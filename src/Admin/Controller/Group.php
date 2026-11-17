@@ -9,7 +9,7 @@
  * @author      Nails Dev Team
  */
 
-namespace Nails\Admin\Faq;
+namespace Nails\Faq\Admin\Controller;
 
 use Nails\Admin\Controller\DefaultController;
 use Nails\Faq\Constants;
